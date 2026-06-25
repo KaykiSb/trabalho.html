@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Referências - CyberShield</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#050d0a;
+--card:#0e1f18;
+--card2:#132c22;
+--accent:#6ee7b7;
+--accent2:#34d399;
+--text:#ecfff6;
+--muted:#a9c7bb;
+--border:#1f3d31;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Space Grotesk',sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
+overflow-x:hidden;
+}
+
+/* fundo leve */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+z-index:-1;
+background:
+radial-gradient(circle at 20% 20%,rgba(110,231,183,.10),transparent 35%),
+radial-gradient(circle at 80% 70%,rgba(52,211,153,.10),transparent 40%);
+animation:moveBg 12s ease-in-out infinite alternate;
+}
+
+@keyframes moveBg{
+0%{transform:scale(1);}
+100%{transform:scale(1.05);}
+}
+
+/* HEADER */
+header{
+position:sticky;
+top:0;
+background:rgba(5,13,10,.7);
+backdrop-filter:blur(14px);
+border-bottom:1px solid var(--border);
+padding:15px 25px;
+}
+
+.back{
+text-decoration:none;
+color:var(--accent);
+font-weight:600;
+padding:10px 16px;
+border-radius:10px;
+display:inline-block;
+transition:.3s;
+}
+
+.back:hover{
+background:rgba(110,231,183,.08);
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:90px 20px 50px;
+max-width:900px;
+margin:auto;
+}
+
+.hero h1{
+font-family:Orbitron;
+font-size:clamp(2.5rem,6vw,4rem);
+color:var(--accent);
+opacity:0;
+animation:fadeUp 1s ease forwards;
+}
+
+.hero p{
+color:var(--muted);
+margin-top:15px;
+opacity:0;
+animation:fadeUp 1s ease .2s forwards;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* CARD */
+.card{
+background:linear-gradient(145deg,var(--card),var(--card2));
+border:1px solid var(--border);
+border-radius:16px;
+padding:22px;
+margin-bottom:18px;
+transition:.4s;
+
+opacity:0;
+transform:translateY(30px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(110,231,183,.12);
+}
+
+/* LISTA */
+ul{
+margin-top:10px;
+padding-left:20px;
+color:var(--muted);
+}
+
+li{
+margin-bottom:8px;
+}
+
+/* TAG */
+.tag{
+display:inline-block;
+padding:4px 10px;
+border-radius:8px;
+background:rgba(110,231,183,.1);
+color:var(--accent);
+font-size:.85rem;
+margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+margin-top:40px;
+border-top:1px solid var(--border);
+color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html" class="back">⬅ Voltar</a>
+</header>
+
+<section class="hero">
+<h1>Referências</h1>
+<p>Fontes utilizadas para construção do projeto CyberShield.</p>
+</section>
+
+<section class="container">
+
+<div class="card">
+<span class="tag">Segurança Digital</span>
+<ul>
+<li>CERT.br – Centro de Estudos, Resposta e Tratamento de Incidentes de Segurança no Brasil</li>
+<li>Cartilhas de Segurança na Internet – CGI.br</li>
+<li>OWASP Foundation – Segurança de aplicações web</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="tag">Proteção de Dados</span>
+<ul>
+<li>Lei Geral de Proteção de Dados (LGPD) – Lei nº 13.709/2018</li>
+<li>Autoridade Nacional de Proteção de Dados (ANPD)</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="tag">Ameaças Cibernéticas</span>
+<ul>
+<li>Relatórios de cibersegurança globais (Kaspersky, Microsoft Security)</li>
+<li>Estudos sobre phishing, malware e ransomware</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="tag">Inteligência Artificial</span>
+<ul>
+<li>Documentos técnicos sobre IA aplicada à segurança digital</li>
+<li>Pesquisas sobre machine learning e detecção de fraudes</li>
+</ul>
+</div>
+
+<div class="card">
+<span class="tag">Observação</span>
+<p>
+Este projeto tem finalidade educacional e foi desenvolvido para fins acadêmicos,
+com base em conteúdos públicos e materiais didáticos de segurança digital.
+</p>
+</div>
+
+</section>
+
+<footer>
+CyberShield • Projeto de Segurança na Internet
+</footer>
+
+<script>
+// animação scroll
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+},{threshold:0.2});
+
+cards.forEach(card=>{
+observer.observe(card);
+});
+</script>
+
+</body>
+</html>
